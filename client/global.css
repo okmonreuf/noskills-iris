@@ -1,0 +1,396 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  /**
+   * NoSkills Intelligence Theme - Espionnage & Surveillance Design
+   */
+  :root {
+    /* Primary Intelligence Theme */
+    --background: 8 12 16; /* Deep dark blue-gray */
+    --foreground: 220 255 255; /* Cyan-white */
+
+    --card: 12 16 20; /* Darker card background */
+    --card-foreground: 220 255 255;
+
+    --popover: 8 12 16;
+    --popover-foreground: 220 255 255;
+
+    --primary: 0 255 255; /* Bright cyan - surveillance color */
+    --primary-foreground: 8 12 16;
+
+    --secondary: 16 20 28; /* Dark gray-blue */
+    --secondary-foreground: 180 200 220;
+
+    --muted: 20 24 32; /* Muted dark */
+    --muted-foreground: 140 160 180;
+
+    --accent: 0 255 127; /* Matrix green */
+    --accent-foreground: 8 12 16;
+
+    --destructive: 255 50 50; /* Alert red */
+    --destructive-foreground: 255 255 255;
+
+    --border: 32 40 48; /* Subtle border */
+    --input: 24 32 40; /* Input background */
+    --ring: 0 255 255; /* Focus ring cyan */
+
+    --radius: 0.375rem;
+
+    /* Sidebar - Command Center Style */
+    --sidebar-background: 4 8 12;
+    --sidebar-foreground: 180 200 220;
+    --sidebar-primary: 0 255 255;
+    --sidebar-primary-foreground: 4 8 12;
+    --sidebar-accent: 12 16 24;
+    --sidebar-accent-foreground: 180 200 220;
+    --sidebar-border: 24 32 40;
+    --sidebar-ring: 0 255 255;
+
+    /* Intelligence specific colors */
+    --intel-classified: 255 50 50; /* Red - Classified */
+    --intel-secret: 255 165 0; /* Orange - Secret */
+    --intel-confidential: 255 255 0; /* Yellow - Confidential */
+    --intel-restricted: 0 255 127; /* Green - Restricted */
+    --intel-unclassified: 0 255 255; /* Cyan - Unclassified */
+    
+    /* Mission status colors */
+    --mission-active: 0 255 127; /* Green - Active mission */
+    --mission-pending: 255 255 0; /* Yellow - Pending */
+    --mission-completed: 0 191 255; /* Blue - Completed */
+    --mission-compromised: 255 50 50; /* Red - Compromised */
+    --mission-archived: 128 128 128; /* Gray - Archived */
+
+    /* Surveillance colors */
+    --surveillance-online: 0 255 127; /* Green - Target online */
+    --surveillance-offline: 128 128 128; /* Gray - Target offline */
+    --surveillance-unknown: 255 165 0; /* Orange - Status unknown */
+    --surveillance-tracked: 0 255 255; /* Cyan - Being tracked */
+
+    /* Evidence classification */
+    --evidence-digital: 0 191 255; /* Blue - Digital evidence */
+    --evidence-physical: 139 69 19; /* Brown - Physical evidence */
+    --evidence-testimony: 255 192 203; /* Pink - Testimony */
+    --evidence-document: 255 255 255; /* White - Documents */
+  }
+
+  .light {
+    /* Light theme fallback - minimal for security */
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --primary: 15 118 110;
+    --primary-foreground: 255 255 255;
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 15 118 110;
+    --accent-foreground: 255 255 255;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 15 118 110;
+  }
+
+  .tactical {
+    /* Tactical/Military Theme */
+    --background: 10 20 10; /* Dark military green */
+    --foreground: 200 255 200; /* Light green */
+    --card: 15 25 15;
+    --card-foreground: 200 255 200;
+    --primary: 0 255 0; /* Bright green - night vision */
+    --primary-foreground: 10 20 10;
+    --secondary: 20 30 20;
+    --secondary-foreground: 180 220 180;
+    --muted: 25 35 25;
+    --muted-foreground: 140 180 140;
+    --accent: 255 255 0; /* Yellow - tactical highlight */
+    --accent-foreground: 10 20 10;
+    --destructive: 255 50 50;
+    --destructive-foreground: 255 255 255;
+    --border: 40 50 40;
+    --input: 30 40 30;
+    --ring: 0 255 0;
+  }
+
+  .stealth {
+    /* Stealth Mode - Ultra Dark */
+    --background: 0 0 0; /* Pure black */
+    --foreground: 0 255 0; /* Matrix green */
+    --card: 5 5 5;
+    --card-foreground: 0 255 0;
+    --primary: 0 255 0;
+    --primary-foreground: 0 0 0;
+    --secondary: 10 10 10;
+    --secondary-foreground: 0 200 0;
+    --muted: 15 15 15;
+    --muted-foreground: 0 150 0;
+    --accent: 255 0 0; /* Red alerts */
+    --accent-foreground: 0 0 0;
+    --destructive: 255 0 0;
+    --destructive-foreground: 255 255 255;
+    --border: 20 20 20;
+    --input: 10 10 10;
+    --ring: 0 255 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Monospace font for technical elements */
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  /* Intelligence Grid Pattern */
+  .intel-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 25px 25px, 25px 25px, 50px 50px;
+    background-position: 0 0, 0 0, 25px 25px;
+  }
+
+  /* Surveillance scan effect */
+  .surveillance-scan {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .surveillance-scan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 255, 0.1) 50%,
+      transparent
+    );
+    animation: scan 3s infinite;
+  }
+
+  @keyframes scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Glow effects for high-tech elements */
+  .cyber-glow {
+    box-shadow: 
+      0 0 5px rgba(0, 255, 255, 0.5),
+      0 0 10px rgba(0, 255, 255, 0.3),
+      0 0 15px rgba(0, 255, 255, 0.1);
+  }
+
+  .danger-glow {
+    box-shadow: 
+      0 0 5px rgba(255, 50, 50, 0.5),
+      0 0 10px rgba(255, 50, 50, 0.3),
+      0 0 15px rgba(255, 50, 50, 0.1);
+  }
+
+  .success-glow {
+    box-shadow: 
+      0 0 5px rgba(0, 255, 127, 0.5),
+      0 0 10px rgba(0, 255, 127, 0.3),
+      0 0 15px rgba(0, 255, 127, 0.1);
+  }
+
+  /* Classification banners */
+  .classified-banner {
+    background: linear-gradient(90deg, 
+      rgba(255, 50, 50, 0.9) 0%,
+      rgba(255, 50, 50, 0.7) 50%,
+      rgba(255, 50, 50, 0.9) 100%
+    );
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px 0;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Matrix-style text effect */
+  .matrix-text {
+    color: rgb(0, 255, 127);
+    text-shadow: 0 0 5px rgba(0, 255, 127, 0.5);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Cyber border effect */
+  .cyber-border {
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    position: relative;
+  }
+
+  .cyber-border::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, 
+      rgba(0, 255, 255, 0.1),
+      transparent,
+      rgba(0, 255, 255, 0.1)
+    );
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  /* Intelligence specific utility classes */
+  .text-classified { color: rgb(var(--intel-classified)); }
+  .text-secret { color: rgb(var(--intel-secret)); }
+  .text-confidential { color: rgb(var(--intel-confidential)); }
+  .text-restricted { color: rgb(var(--intel-restricted)); }
+  .text-unclassified { color: rgb(var(--intel-unclassified)); }
+
+  .bg-classified { background-color: rgb(var(--intel-classified)); }
+  .bg-secret { background-color: rgb(var(--intel-secret)); }
+  .bg-confidential { background-color: rgb(var(--intel-confidential)); }
+  .bg-restricted { background-color: rgb(var(--intel-restricted)); }
+  .bg-unclassified { background-color: rgb(var(--intel-unclassified)); }
+
+  .text-mission-active { color: rgb(var(--mission-active)); }
+  .text-mission-pending { color: rgb(var(--mission-pending)); }
+  .text-mission-completed { color: rgb(var(--mission-completed)); }
+  .text-mission-compromised { color: rgb(var(--mission-compromised)); }
+  .text-mission-archived { color: rgb(var(--mission-archived)); }
+
+  .bg-mission-active { background-color: rgb(var(--mission-active)); }
+  .bg-mission-pending { background-color: rgb(var(--mission-pending)); }
+  .bg-mission-completed { background-color: rgb(var(--mission-completed)); }
+  .bg-mission-compromised { background-color: rgb(var(--mission-compromised)); }
+  .bg-mission-archived { background-color: rgb(var(--mission-archived)); }
+
+  /* Surveillance indicators */
+  .surveillance-online { 
+    color: rgb(var(--surveillance-online));
+    animation: pulse 2s infinite;
+  }
+  .surveillance-offline { color: rgb(var(--surveillance-offline)); }
+  .surveillance-unknown { color: rgb(var(--surveillance-unknown)); }
+  .surveillance-tracked { 
+    color: rgb(var(--surveillance-tracked));
+    animation: blink 1s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+  }
+
+  /* Evidence type colors */
+  .evidence-digital { color: rgb(var(--evidence-digital)); }
+  .evidence-physical { color: rgb(var(--evidence-physical)); }
+  .evidence-testimony { color: rgb(var(--evidence-testimony)); }
+  .evidence-document { color: rgb(var(--evidence-document)); }
+
+  /* Terminal-like scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.5);
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(0, 255, 255, 0.3);
+    color: rgb(220, 255, 255);
+  }
+
+  /* Loading animations */
+  .loading-dots::after {
+    content: '';
+    animation: dots 1.5s infinite;
+  }
+
+  @keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+  }
+
+  /* Status indicators */
+  .status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .status-active { background-color: rgb(var(--mission-active)); }
+  .status-pending { background-color: rgb(var(--mission-pending)); }
+  .status-completed { background-color: rgb(var(--mission-completed)); }
+  .status-compromised { background-color: rgb(var(--mission-compromised)); }
+  .status-archived { background-color: rgb(var(--mission-archived)); }
+
+  /* Typing animation for live updates */
+  .typing-animation {
+    border-right: 2px solid rgb(var(--primary));
+    animation: typing 1s infinite;
+  }
+
+  @keyframes typing {
+    0%, 50% { border-color: rgb(var(--primary)); }
+    51%, 100% { border-color: transparent; }
+  }
+}
+
+/* Print styles for classified documents */
+@media print {
+  .classified-banner {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
